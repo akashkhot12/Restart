@@ -13,17 +13,20 @@ app.get('/',async(req,res)=>{
 
 app.post('/',async(req,res)=>{
     let data = await db();
-    let addData = await data.insertOne({
-        firstName:req.body,
-        LastName:req.body
-    })
+    const {firstName,LastName,gender} = req.body;
+    let addData = await data.insertOne({firstName,LastName,gender})
     res.status(201).json({message:"inserted Successfully",addData})
 })
 
-app.put('/:id',async(req,res)=>{
+app.put('/data/:id',async(req,res)=>{
     let data = await db();
-    let updateData = await data.updateMany({firstName:req.params.id},{$set:{firstName:req.body,LastName:req.body,gender:req.body}});
-    res.status(201).json({message:"update successfully", updateData})
+    const {firstName,LastName,gender} = req.body;
+    let updateData = await data.updateOne({_id:req.params.id},{$set:{firstName,LastName,gender}});
+    if (updateData) {
+        res.status(201).json({message:"update successfully", updateData})
+    } else {
+        res.status(401).json({message:"data is not inserted"})
+    }
 
     // const updatedResource = await data.findByIdAndUpdate(req.params.id,
     //     { firstName, LastName,gender },
