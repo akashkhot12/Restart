@@ -15,14 +15,27 @@ app.post('/',async(req,res)=>{
     let data = await db();
     let addData = await data.insertOne({
         firstName:req.body,
-        LastName:req.body,
-        gender:req.body
+        LastName:req.body
     })
     res.status(201).json({message:"inserted Successfully",addData})
 })
 
 app.put('/:id',async(req,res)=>{
-    
+    let data = await db();
+    let updateData = await data.updateMany({firstName:req.params.id},{$set:{firstName:req.body,LastName:req.body,gender:req.body}});
+    res.status(201).json({message:"update successfully", updateData})
+
+    // const updatedResource = await data.findByIdAndUpdate(req.params.id,
+    //     { firstName, LastName,gender },
+    //     { new: true }
+    //   );
+    //   res.json(updatedResource);
+})
+
+app.delete('/:id',async(req,res)=>{
+    let data = await db();
+    let deletData = await data.deleteMany({_id:req.body.params});
+    res.status(201).json({message:"delete successfully", deletData})
 })
 
 
