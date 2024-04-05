@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const registrations = require('./controller')
 
 
-router.post('/',async(req,res)=>{
-    res.send("this is post api ")
-})
+router.post('/',registrations)
 
 module.exports= router;
