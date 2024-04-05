@@ -2,7 +2,7 @@ let marks = prompt("please neter your marks ")
 
 if (marks>=90 && marks<=100) {
     console.log("grade A");
-}else if (marks>=70 &&marks<=89) {
+}else if (marks>=70 && marks<=89) {
     console.log("grade B");
 }
 else if (marks>=60 && marks<=69) {
