@@ -10,6 +10,9 @@ else if (marks>=60 && marks<=69) {
 }
 else if (marks>=50 && marks<=59) {
     console.log("grade D");
+}
+else if (marks>=0 && marks<=49) {
+    console.log("Fail");
 }else {
     console.log("invalid digits");
 }
