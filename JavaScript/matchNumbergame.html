@@ -8,12 +8,21 @@
 <body>
     
 </body>
-<script>
+<!-- <script>
     let number = 25;
     let matchNum = prompt("enter a number : ");
     while (number!=matchNum) {
         prompt("wrong number. again enter number : ");
     }
-    console.log("congratulations match the number.");
+    console.log("congratulations match the number."); -->
+
+    <script>
+
+        let user = prompt("please enter your Full Name");
+        let chartersLength = user.length;
+
+        let givingUserName = `@${user}${chartersLength}`
+        console.log(givingUserName);
+
 </script>
 </html>
